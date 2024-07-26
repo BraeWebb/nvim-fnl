@@ -111,6 +111,18 @@
         };
       };
 
+      neo-tree = {
+        enable = true;
+        window.mappings = {
+          "l" = "open";
+          "h" = "close_node";
+          "P" = {
+            command = "toggle_preview";
+            config = {use_float = true;};
+          };
+        };
+      };
+
       telescope = {
         enable = true;
         extensions = {
@@ -182,6 +194,13 @@
           timeout_ms = 2000,
         })
       end
+      _G.toggle_neotree = function()
+        local neotree = require("neo-tree.command");
+        neotree.execute({
+          toggle = true,
+          dir = vim.uv.cwd()
+        })
+      end
     '';
 
     keymaps = [
@@ -193,6 +212,16 @@
           silent = true;
           noremap = true;
           desc = "[F]ormat buffer";
+        };
+      }
+      {
+        key = "<leader>e";
+        mode = ["n" "v"];
+        action = ":lua _G.toggle_neotree()<CR>";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "[e]xplore files";
         };
       }
     ];
