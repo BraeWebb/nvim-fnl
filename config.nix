@@ -3,6 +3,11 @@
   lib,
   ...
 }: {
+  imports = [
+    ./tex.nix
+    ./snippets.nix
+  ];
+
   config = {
     globals = {
       mapleader = " ";
@@ -24,7 +29,6 @@
       hlsearch = true;
       inccommand = "split";
       signcolumn = "yes";
-      conceallevel = 0;
       foldenable = false;
       hidden = true;
       swapfile = false;
