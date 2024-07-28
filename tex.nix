@@ -1,9 +1,16 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
-  config = {
+}: let
+  cfg = config.vimtex;
+in {
+  options = {
+    vimtex.enable = lib.mkEnableOption "Enable vimtex (installs tex distribution)";
+  };
+
+  config = lib.mkIf cfg.enable {
     globals = {
       tex_flavor = "latex";
       tex_conceal = "abdmg";
@@ -15,6 +22,7 @@
 
     plugins.vimtex = {
       enable = true;
+      texlivePackage = pkgs.texlive.combined.scheme-full;
       settings = {
         view_method = "skim";
         compiler_method = "latexmk";
