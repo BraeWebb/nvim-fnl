@@ -1,6 +1,6 @@
 {
+  vimtex ? false,
   pkgs,
-  lib,
   ...
 }: {
   imports = [
@@ -9,6 +9,8 @@
   ];
 
   config = {
+    vimtex.enable = vimtex;
+
     globals = {
       mapleader = " ";
       maplocalleader = ";";

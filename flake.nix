@@ -35,7 +35,17 @@
         nixvimLib = nixvim.lib.${system};
         nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
           inherit pkgs;
-          module = config;
+          module = import ./config.nix {
+            inherit pkgs;
+            vimtex = false;
+          };
+        };
+        nvimWithTex = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          inherit pkgs;
+          module = import ./config.nix {
+            inherit pkgs;
+            vimtex = true;
+          };
         };
       in {
         checks = {
@@ -47,6 +57,8 @@
 
         packages = {
           default = nvim;
+          nvim = nvim;
+          nvimWithTex = nvimWithTex;
         };
 
         devShells.default = pkgs.mkShellNoCC {
