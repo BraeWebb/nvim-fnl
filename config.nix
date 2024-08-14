@@ -40,7 +40,7 @@
 
       splitright = true;
       splitbelow = true;
-      wrap = false;
+      wrap = true;
       pumblend = 10;
       pumheight = 10;
       confirm = true;
