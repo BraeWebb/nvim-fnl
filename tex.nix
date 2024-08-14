@@ -24,7 +24,10 @@ in {
       enable = true;
       texlivePackage = pkgs.texlive.combined.scheme-full;
       settings = {
-        view_method = "skim";
+        view_method =
+          if pkgs.stdenv.isDarwin
+          then "skim"
+          else "zathura";
         compiler_method = "latexmk";
         quickfix_enabled = true;
         quickfix_open_on_warning = false;
