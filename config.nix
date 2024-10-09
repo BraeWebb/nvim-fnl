@@ -85,6 +85,8 @@
       cmp-path = {enable = true;};
       cmp_luasnip = {enable = true;};
 
+      copilot-vim = {enable = true;};
+
       comment.enable = true;
       conform-nvim = {
         enable = true;

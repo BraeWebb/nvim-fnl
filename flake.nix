@@ -32,6 +32,15 @@
         system,
         ...
       }: let
+        # override nixpkgs to allow unfree copilot
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfreePredicate = pkg:
+            builtins.elem (pkgs.lib.getName pkg) [
+              "copilot.vim"
+            ];
+        };
+
         nixvimLib = nixvim.lib.${system};
         nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
           inherit pkgs;
