@@ -1,5 +1,6 @@
 {
   vimtex ? false,
+  copilot ? false,
   pkgs,
   ...
 }: {
@@ -85,7 +86,7 @@
       cmp-path = {enable = true;};
       cmp_luasnip = {enable = true;};
 
-      copilot-vim = {enable = true;};
+      copilot-vim = {enable = copilot;};
 
       comment.enable = true;
       conform-nvim = {

@@ -42,18 +42,37 @@
         };
 
         nixvimLib = nixvim.lib.${system};
-        nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+        mkNix = nixvim.legacyPackages.${system}.makeNixvimWithModule;
+        nvim = mkNix {
           inherit pkgs;
-          module = import ./config.nix {
+          module = config {
             inherit pkgs;
             vimtex = false;
+            copilot = false;
           };
         };
-        nvimWithTex = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+        nvim-tex = mkNix {
           inherit pkgs;
-          module = import ./config.nix {
+          module = config {
             inherit pkgs;
             vimtex = true;
+            copilot = false;
+          };
+        };
+        nvim-ai = mkNix {
+          inherit pkgs;
+          module = config {
+            inherit pkgs;
+            vimtex = false;
+            copilot = true;
+          };
+        };
+        nvim-tex-ai = mkNix {
+          inherit pkgs;
+          module = config {
+            inherit pkgs;
+            vimtex = true;
+            copilot = true;
           };
         };
       in {
@@ -67,11 +86,14 @@
         packages = {
           default = nvim;
           nvim = nvim;
-          nvimWithTex = nvimWithTex;
+          nvimWithTex = nvim-tex;
+          nvim-tex = nvim-tex;
+          nvim-ai = nvim-ai;
+          nvim-tex-ai = nvim-tex-ai;
         };
 
         devShells.default = pkgs.mkShellNoCC {
-          packages = with pkgs; [
+          packages = [
             nvim
           ];
         };
