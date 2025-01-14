@@ -91,20 +91,22 @@
       comment.enable = true;
       conform-nvim = {
         enable = true;
-        notifyOnError = true;
-        formattersByFt = {
-          lua = ["stylua"];
-          fennel = ["fnlfmt"];
-          python = ["ruff_format"];
-          javascript = [["prettierd" "prettier" "eslint_d"]];
-          typescriptreact = [["prettierd" "eslint_id"]];
-          gdscript = ["gdformat"];
-          nix = ["alejandra"];
-        };
+        settings = {
+          notify_on_error = true;
+          formatters_by_ft = {
+            lua = ["stylua"];
+            fennel = ["fnlfmt"];
+            python = ["ruff_format"];
+            javascript = [["prettierd" "prettier" "eslint_d"]];
+            typescriptreact = [["prettierd" "eslint_id"]];
+            gdscript = ["gdformat"];
+            nix = ["alejandra"];
+          };
 
-        formatOnSave = {
-          lspFallback = true;
-          timeoutMs = 500;
+          format_on_save = {
+            lspFallback = true;
+            timeoutMs = 500;
+          };
         };
         #mapping = {
         #  "<leader>f" = "conform.format({ async = true, lsp_fallback = true })";
@@ -132,6 +134,8 @@
         };
       };
 
+      quarto.enable = true;
+
       telescope = {
         enable = true;
         extensions = {
@@ -158,7 +162,7 @@
 
       todo-comments = {
         enable = true;
-        signs = false;
+        settings.signs = false;
       };
 
       treesitter = {
@@ -191,6 +195,8 @@
           ];
         };
       };
+
+      web-devicons.enable = true;
     };
 
     extraConfigLuaPre = ''
