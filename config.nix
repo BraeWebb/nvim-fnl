@@ -97,6 +97,8 @@
             lua = ["stylua"];
             fennel = ["fnlfmt"];
             python = ["ruff_format"];
+            c = ["clang_format"];
+            cpp = ["clang_format"];
             javascript = [["prettierd" "prettier" "eslint_d"]];
             typescriptreact = [["prettierd" "eslint_id"]];
             gdscript = ["gdformat"];
@@ -119,6 +121,7 @@
         enable = true;
         servers = {
           nixd.enable = true;
+          clangd.enable = true;
         };
       };
 
