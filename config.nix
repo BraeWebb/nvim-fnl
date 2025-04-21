@@ -103,6 +103,7 @@
             typescriptreact = [["prettierd" "eslint_id"]];
             gdscript = ["gdformat"];
             nix = ["alejandra"];
+            go = ["gofmt"];
           };
 
           format_on_save = {
@@ -122,6 +123,11 @@
         servers = {
           nixd.enable = true;
           clangd.enable = true;
+          hls = {
+            enable = true;
+            installGhc = true;
+          };
+          gopls.enable = true;
         };
       };
 
@@ -195,6 +201,8 @@
             "markdown"
             "yaml"
             "python"
+            "haskell"
+            "go"
           ];
         };
       };
