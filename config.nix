@@ -100,6 +100,7 @@
             c = ["clang_format"];
             cpp = ["clang_format"];
             javascript = [["prettierd" "prettier" "eslint_d"]];
+            typst = ["typstyle"];
             typescriptreact = [["prettierd" "eslint_id"]];
             gdscript = ["gdformat"];
             nix = ["alejandra"];
@@ -138,6 +139,13 @@
       };
 
       quarto.enable = true;
+      typst-vim = {
+        enable = true;
+        settings.pdf_viewer =
+          if pkgs.stdenv.isDarwin
+          then "skim"
+          else "zathura";
+      };
 
       telescope = {
         enable = true;
@@ -188,6 +196,7 @@
             "java"
             "javascript"
             "typescript"
+            "typst"
             "tsx"
             "astro"
             "json"
@@ -265,6 +274,7 @@
 
     extraPackages = [
       pkgs.alejandra
+      pkgs.typstyle
     ];
   };
 }
