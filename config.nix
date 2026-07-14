@@ -134,14 +134,15 @@
 
       neo-tree = {
         enable = true;
-        window.mappings = {
-          "l" = "open";
-          "h" = "close_node";
-          "P" = {
-            command = "toggle_preview";
-            config = {use_float = true;};
-          };
-        };
+        # TODO(25.11): No longer supported
+        #window.mappings = {
+        #  "l" = "open";
+        #  "h" = "close_node";
+        #  "P" = {
+        #    command = "toggle_preview";
+        #    config = {use_float = true;};
+        #  };
+        #};
       };
 
       quarto.enable = true;
